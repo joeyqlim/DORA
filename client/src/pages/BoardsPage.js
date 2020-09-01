@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchBoards } from '../actions/boardsActions';
 import { Board } from '../components/Board';
 
-const BoardsPage = ({ dispatch, loading, boards, hasErrors }) => {
+const BoardsPage = ({ dispatch, loading, boards, hasErrors, userReducer }) => {
   useEffect(() => {
     dispatch(fetchBoards())
   }, [dispatch]);
@@ -18,6 +18,7 @@ const BoardsPage = ({ dispatch, loading, boards, hasErrors }) => {
 
   return (
     <section>
+    {!userReducer.loggedIn ? "" : <h1>Welcome, {userReducer.user.username}</h1>}
       <h1>Boards</h1>
       {renderBoards()}
     </section>
@@ -29,6 +30,7 @@ const mapStateToProps = (state) => ({
   loading: state.boards.loading,
   boards: state.boards.boards,
   hasErrors: state.boards.hasErrors,
+  userReducer: state.userReducer
 })
 
 export default connect(mapStateToProps)(BoardsPage)

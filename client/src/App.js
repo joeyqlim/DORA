@@ -3,8 +3,8 @@ import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import {connect} from 'react-redux'
 
 import Navbar from './components/Navbar'
-import DashboardPage from './pages/DashboardPage'
 import BoardsPage from './pages/BoardsPage'
+import BoardDetail from './components/BoardDetail'
 import LoginComponent from './components/LoginComponent'
 import RegisterComponent from './components/RegisterComponent'
 import AuthRoute from './components/AuthRoute'
@@ -23,20 +23,19 @@ class App extends Component {
         <Navbar />
         <Container>
         <Segment>
-        {!this.props.userReducer.loggedIn ? "" : <h1>Welcome, {this.props.userReducer.user.username}</h1>}
         <Switch>
           <AuthRoute exact path="/" type="guest">
             <LoginComponent />
           </AuthRoute>
-          <AuthRoute path="/login" type="guest">
+          <AuthRoute exact path="/login" type="guest">
             <LoginComponent />
           </AuthRoute>
-          <AuthRoute exact path="/register" type="register">
+          <AuthRoute exact path="/register" type="guest">
             <RegisterComponent />
           </AuthRoute>
 
-          <AuthRoute path="/home" component={BoardsPage} type="private" />
-          <Route path="/" render={DashboardPage} />
+          <AuthRoute exact path="/home" component={BoardsPage} type="private" />
+          <AuthRoute exact path="/board/:boardId" component={BoardDetail} type="private" />
 
         </Switch>
         </Segment>
