@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { decode } from "jsonwebtoken";
 
 const URL = process.env.REACT_APP_URL;
 
@@ -30,15 +31,49 @@ export const signUserUp = (userInfo) => dispatch => {
   })
 }
 
-// auto login if token exists
-// export const autoLogin = () => dispatch => {
-//   axios.post(`${URL}/auth/autologin`, { headers: {
-//     "x-auth-token": `${localStorage.getItem("token")}`,
-//   }})
-//   .then((res) =>{
-//     console.log(res.data);
-
-//     localStorage.setItem("token", res.data.token)
-//     dispatch(setUser(res.data.user))
+// const autoLoginHelper = (token) => dispatch =>{
+//   axios.get(`${URL}/auth/autologin`, {
+//     headers: {
+//       "x-auth-token": token,
+//     },
 //   })
+//     .then((res) => {
+//       console.log(res.data);
+//       dispatch(setUser(res.data.user))
+//     })
+//     .catch((err) => {
+//       console.log(err);
+      
+//     });
 // }
+
+// auto login if token exists
+export const autoLogin = () => dispatch => {
+  let token = localStorage.getItem("token");
+
+    // if token exists
+    if (!(token == null)) {
+      let decodedToken = decode(token);
+
+      if (!decodedToken) {
+        localStorage.removeItem("token");
+      } else {
+        
+        axios.get(`${URL}/auth/autologin`, {
+          headers: {
+            "x-auth-token": token,
+          },
+        })
+          .then((res) => {
+            console.log(res.data);
+            dispatch(setUser(res.data.user))
+          })
+          .catch((err) => {
+            console.log(err);
+            
+          });
+        
+      }
+    }
+}
+

@@ -8,13 +8,13 @@ import BoardsPage from './pages/BoardsPage'
 import LoginComponent from './components/LoginComponent'
 import RegisterComponent from './components/RegisterComponent'
 import AuthRoute from './components/AuthRoute'
-//import {autoLogin} from './actions/userActions'
+import {autoLogin} from './actions/userActions'
 
 import { Container, Segment } from 'semantic-ui-react'
 
 class App extends Component {
   componentDidMount() {
-    //this.props.autoLogin();
+    this.props.autoLogin();
   }
 
   render() {
@@ -52,10 +52,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     autoLogin: () => dispatch(autoLogin())
-//   }
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    autoLogin: () => dispatch(autoLogin())
+  }
+}
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
