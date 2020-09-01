@@ -11,12 +11,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 // API
-const checkToken = require("./config/config");
 const auth = require('./api/auth');
-app.use('/api/auth', auth);
 const board = require('./api/board');
-app.use('/api/board', board);
+const list = require('./api/list');
+const card = require('./api/card');
 
+app.use('/api/auth', auth);
+app.use('/api/board', board);
+app.use('/api/list', list);
+app.use('/api/card', card);
+
+// For deployment
 app.use(express.static(path.join(__dirname, '../build')))
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../build'))

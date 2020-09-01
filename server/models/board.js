@@ -6,6 +6,9 @@ const boardSchema = new Schema({
         type: String,
         required: true
     },
+    description: {
+      type: String,
+    },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -17,4 +20,5 @@ const boardSchema = new Schema({
   },
   { timestamps: true },
 )
+
 module.exports = mongoose.model("Board", boardSchema)

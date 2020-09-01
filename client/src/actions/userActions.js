@@ -31,22 +31,6 @@ export const signUserUp = (userInfo) => dispatch => {
   })
 }
 
-// const autoLoginHelper = (token) => dispatch =>{
-//   axios.get(`${URL}/auth/autologin`, {
-//     headers: {
-//       "x-auth-token": token,
-//     },
-//   })
-//     .then((res) => {
-//       console.log(res.data);
-//       dispatch(setUser(res.data.user))
-//     })
-//     .catch((err) => {
-//       console.log(err);
-      
-//     });
-// }
-
 // auto login if token exists
 export const autoLogin = () => dispatch => {
   let token = localStorage.getItem("token");

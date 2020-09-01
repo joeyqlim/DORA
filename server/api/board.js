@@ -121,7 +121,7 @@ router.put("/:id", async (req, res) => {
 */
 router.delete("/delete/:id", checkToken, async (req, res) => {
   try {
-    let deleteBoard = await Board.findByIdAndDelete(req.params.id);
+    let deleteBoard = await Board.findByIdAndDelete(req.params.id).remove().exec();
 
     if (deleteBoard) {
       res.status(200).json({

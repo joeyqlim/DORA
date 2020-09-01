@@ -25,12 +25,12 @@ export const getBoardsFailure = () => ({
 export function fetchBoards() {
   return async (dispatch) => {
     dispatch(getBoards());
+    let token = localStorage.getItem("token");
 
     try {
-      // hard coded for testing
       const response = await axios.get(`${URL}/board/all`, {
         headers: {
-          'x-auth-token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY0YTE1OTFhMjVhYzYyNTBjYWU1ZjRhIn0sImlhdCI6MTU5ODg1OTc3MywiZXhwIjoxOTU4ODU5NzczfQ._PdJTX0CzG6yg6j4QDqhrPbRcPZeRKRHQK2GGk7DVqQ'
+          'x-auth-token' : token
         }
       });
       console.log(response.data)

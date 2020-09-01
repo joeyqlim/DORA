@@ -6,9 +6,9 @@ const cardSchema = new Schema({
         type: String,
         required: true
     },
-    board: {
+    list: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Board",
+      ref: "List",
     },
   },
   { timestamps: true },

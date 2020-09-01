@@ -4,16 +4,15 @@ import axios from "axios";
 import { Grid, Container } from 'semantic-ui-react'
 
 
-function BoardDetail() {
-  const { boardId: id } = useParams();
+function List() {
 
-  // fetch all lists in this board
-  // render each list into a list component
+  // each list will be a row
+  // fetch cards and render each into a card component
   return (
     <Grid divided='vertically'>
-      {/* render lists */}
+      {/* render cards */}
     </Grid>
   );
 }
 
-export default BoardDetail;
+export default List;
