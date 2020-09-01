@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { fetchBoards } from '../actions/boardsActions';
 import { Board } from '../components/Board';
 
+import { Card, Container } from 'semantic-ui-react'
+
 const BoardsPage = ({ dispatch, loading, boards, hasErrors, userReducer }) => {
   useEffect(() => {
     dispatch(fetchBoards())
@@ -17,11 +19,13 @@ const BoardsPage = ({ dispatch, loading, boards, hasErrors, userReducer }) => {
   }
 
   return (
-    <section>
+    <Container>
     {!userReducer.loggedIn ? "" : <h1>Welcome, {userReducer.user.username}</h1>}
       <h1>Boards</h1>
-      {renderBoards()}
-    </section>
+      <Card.Group itemsPerRow={4}>
+        {renderBoards()}
+      </Card.Group>
+    </Container>
   )
 }
 
