@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {signUserUp} from '../actions/userActions'
 
+import { Container, Form, Button, Grid } from 'semantic-ui-react'
+
 class SignUpComponent extends React.Component {
     state = {
         username: "",
@@ -24,48 +26,58 @@ class SignUpComponent extends React.Component {
 
     render(){
         return(
-            <div>
-                <h1>SignUp Form</h1>
-                <form onSubmit={this.onSubmit}>
-                    <input 
-                        type="text" 
-                        name="username" 
-                        placeholder="Username" 
-                        value={this.state.username}
-                        onChange={this.handleOnChange}
-                    />
-                    <br/>
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        value={this.state.email}
-                        onChange={this.handleOnChange}
-                    />
-                    <br/>
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        value={this.state.password}
-                        onChange={this.handleOnChange}
-                    />
-                    <br/>
-                    <input
-                        type="password"
-                        name="confirmPassword"
-                        placeholder="Confirm Password"
-                        value={this.state.confirmPassword}
-                        onChange={this.handleOnChange}
-                    />
+            <Container>
+                <Grid className="centered">
+                <Grid.Row>
+                    <Grid.Column width={5}>
+                        <h1>Register</h1>
+                        <Form onSubmit={this.onSubmit}>
+                            <Form.Field>
+                            <input 
+                                type="text" 
+                                name="username" 
+                                placeholder="Username" 
+                                value={this.state.username}
+                                onChange={this.handleOnChange}
+                            />
+                            </Form.Field>
 
-                    <br/>
-                    <input
-                        type="submit"
-                        value="Login"
-                    />
-                </form>
-            </div>
+                            <Form.Field>
+                            <input 
+                                type="text" 
+                                name="email" 
+                                placeholder="Email" 
+                                value={this.state.email}
+                                onChange={this.handleOnChange}
+                            />
+                            </Form.Field>
+
+                            <Form.Field>
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="Password"
+                                value={this.state.password}
+                                onChange={this.handleOnChange}
+                            />
+                            </Form.Field>
+
+                            <Form.Field>
+                            <input
+                                type="password"
+                                name="confirmPassword"
+                                placeholder="Confirm Password"
+                                value={this.state.confirmPassword}
+                                onChange={this.handleOnChange}
+                            />
+                            </Form.Field>
+                            <Button type="submit">Register</Button>
+                            
+                        </Form>
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
+            </Container>
         )
     }
 }

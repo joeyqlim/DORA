@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {fetchUser} from '../actions/userActions'
 
+import { Container, Form, Button, Grid } from 'semantic-ui-react'
+
 class LoginComponent extends React.Component {
     state = {
         email: "",
@@ -22,31 +24,38 @@ class LoginComponent extends React.Component {
 
     render(){
         return(
-            <div>
-                <h1>Login Form</h1>
-                <form onSubmit={this.onSubmit}>
-                    <input 
-                        type="text" 
-                        name="email" 
-                        placeholder="Email" 
-                        value={this.state.email}
-                        onChange={this.handleOnChange}
-                    />
-                    <br/>
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        value={this.state.password}
-                        onChange={this.handleOnChange}
-                    />
-                    <br/>
-                    <input
-                        type="submit"
-                        value="Login"
-                    />
-                </form>
-            </div>
+            <Container>
+                <Grid className="centered">
+                <Grid.Row>
+                    <Grid.Column width={5}>
+                        <h1>Log In</h1>
+                        <Form onSubmit={this.onSubmit}>
+                            <Form.Field>
+                            <input 
+                                type="text" 
+                                name="email" 
+                                placeholder="Email" 
+                                value={this.state.email}
+                                onChange={this.handleOnChange}
+                            />
+                            </Form.Field>
+
+                            <Form.Field>
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="Password"
+                                value={this.state.password}
+                                onChange={this.handleOnChange}
+                            />
+                            </Form.Field>
+                            <Button type="submit">Log In</Button>
+                            
+                        </Form>
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
+            </Container>
         )
     }
 }
