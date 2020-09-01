@@ -5,8 +5,9 @@ import {signUserUp} from '../actions/userActions'
 class SignUpComponent extends React.Component {
     state = {
         username: "",
+        email: "",
         password: "",
-        age: ""
+        confirmPassword: ""
     }
 
     handleOnChange = (e) => {
@@ -35,6 +36,14 @@ class SignUpComponent extends React.Component {
                     />
                     <br/>
                     <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value={this.state.email}
+                        onChange={this.handleOnChange}
+                    />
+                    <br/>
+                    <input
                         type="password"
                         name="password"
                         placeholder="Password"
@@ -43,10 +52,10 @@ class SignUpComponent extends React.Component {
                     />
                     <br/>
                     <input
-                        type="number"
-                        name="age"
-                        placeholder="Age"
-                        value={this.state.age}
+                        type="password"
+                        name="confirmPassword"
+                        placeholder="Confirm Password"
+                        value={this.state.confirmPassword}
                         onChange={this.handleOnChange}
                     />
 
