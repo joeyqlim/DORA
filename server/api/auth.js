@@ -42,7 +42,7 @@ router.post('/login', async (req, res) => {
         if (err) throw err;     
         res
           .status(200)
-          .json({ token, message: "logged in successfully!" });
+          .json({ token, message: "logged in successfully!", user });
       }
     );
   } catch (error) {
@@ -95,7 +95,7 @@ router.post('/register', async (req, res) => {
               if (err) throw err;     
               res
                 .status(200)
-                .json({ token, message: "user registered successfully!" });
+                .json({ token, message: "user registered successfully!", user });
             }
           );
       }

@@ -1,5 +1,6 @@
 import axios from 'axios';
-const URL = "http://localhost:3010/api";
+
+const URL = process.env.REACT_APP_URL;
 
 // Create Redux action types
 export const GET_BOARDS = 'GET_BOARDS'
