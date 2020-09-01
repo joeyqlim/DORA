@@ -54,6 +54,53 @@ router.post('/login', async (req, res) => {
 });
 
 /* 
+    @route POST api/auth/autologin
+    @desc automatically login existing user if token is found
+    @access public
+*/
+// NOT YET COMPLETE
+router.post('/autologin', async (req, res) => {
+  console.log(req.body)
+  let { email, password } = req.body;
+  try {
+    //search db for user with email
+    let user = await User.findOne({ email });
+    // check if user exists
+    if (!user) {
+      return res.status(400).json({ message: "user not found!" });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: "wrong credentials" });
+    }
+
+    const payload = {
+      user: {
+        id: user._id,
+      },
+    };
+    //gives you a token on login
+    jwt.sign(
+      payload,
+      "exploradora",
+      { expiresIn: 360000000 },
+      (err, token) => {
+        if (err) throw err;     
+        res
+          .status(200)
+          .json({ token, message: "logged in successfully!", user });
+      }
+    );
+  } catch (error) {
+    res.status(500).json({ 
+        error: error, 
+        message: "unable to login"
+    })
+  }
+});
+
+/* 
     @route POST api/auth/register
     @desc register new user
     @access public

@@ -32,7 +32,7 @@ export const signUserUp = (userInfo) => dispatch => {
 
 // auto login if token exists
 // export const autoLogin = () => dispatch => {
-//   axios.post(`${URL}/auth/login`, { headers: {
+//   axios.post(`${URL}/auth/autologin`, { headers: {
 //     "x-auth-token": `${localStorage.getItem("token")}`,
 //   }})
 //   .then((res) =>{

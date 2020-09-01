@@ -10,7 +10,7 @@ import RegisterComponent from './components/RegisterComponent'
 import AuthRoute from './components/AuthRoute'
 //import {autoLogin} from './actions/userActions'
 
-import { Container } from 'semantic-ui-react'
+import { Container, Segment } from 'semantic-ui-react'
 
 class App extends Component {
   componentDidMount() {
@@ -22,6 +22,7 @@ class App extends Component {
       <Router>
         <Navbar />
         <Container>
+        <Segment>
         {!this.props.userReducer.loggedIn ? "" : <h1>Welcome, {this.props.userReducer.user.username}</h1>}
         <Switch>
           <AuthRoute exact path="/" type="guest">
@@ -38,6 +39,7 @@ class App extends Component {
           <Route path="/" render={DashboardPage} />
 
         </Switch>
+        </Segment>
         </Container>
       </Router>
     )
