@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { Grid, Container } from 'semantic-ui-react'
+import { useParams, Link } from 'react-router-dom';
+import { Grid, Card, Container, Button, Icon } from 'semantic-ui-react'
 import { fetchOneBoard } from '../actions/oneBoardActions';
 
 import List from './List';
 
-function BoardDetail({ dispatch, loading, board, hasErrors, userReducer }) {
-  const { boardId: boardId } = useParams();
+const BoardDetail = ({ dispatch, loading, board, hasErrors }) => {
+  const { boardId } = useParams();
   useEffect(() => {
     dispatch(fetchOneBoard(boardId))
-  }, [dispatch]);
+  }, [dispatch, boardId]);
 
   // Show loading, error or success state
   const renderBoardDetail = () => {
@@ -30,9 +30,19 @@ function BoardDetail({ dispatch, loading, board, hasErrors, userReducer }) {
   // fetch all lists in this board
   // render each list into a list component
   return (
-    <Grid divided='vertically'>
+    <Grid padded divided='vertically' style={{ margin: '.1em .1em 3em .1em' }}>
       <h2>{board.name}</h2>
+      <Container>
+      <Grid.Row>
       {renderBoardDetail()}
+      <Card fluid={true}>
+        <Card.Content textAlign="center" >
+          <Card.Header content="Add a new list to this board" />
+        </Card.Content>
+        <Button color='green'><Link to={`/addlist/${board._id}`}>Add List <Icon name='add' /></Link></Button>
+      </Card>
+      </Grid.Row>
+    </Container>
     </Grid>
   );
 }

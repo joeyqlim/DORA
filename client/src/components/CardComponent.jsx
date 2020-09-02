@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Card, Segment } from 'semantic-ui-react'
-
+import React from 'react';
+import { Icon, Segment } from 'semantic-ui-react'
 
 function CardComponent({card}) {
   const square = { width: 135, height: 135 }
 
   return (  
+    
     <Segment circular style={square} inverted color='teal'>
-      {card.content}
+      {card.content}<br />
+      <span><Icon name='edit' /></span>
+      <span><Icon name='delete' /></span>
     </Segment>
   );
 }

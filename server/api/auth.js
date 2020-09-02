@@ -59,7 +59,6 @@ router.post('/login', async (req, res) => {
     @desc automatically login existing user if token is found
     @access public
 */
-// NOT YET COMPLETE
 router.get('/autologin', checkToken, async (req, res) => {
   try {
     let user = await User.findById(req.user.id, "-password");

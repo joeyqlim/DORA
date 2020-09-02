@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import {BrowserRouter as Router, Switch } from 'react-router-dom'
 import {connect} from 'react-redux'
 
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import BoardsPage from './pages/BoardsPage'
 import BoardDetail from './components/BoardDetail'
+import AddBoardPage from './pages/AddBoardPage'
+import AddListPage from './pages/AddListPage'
 import LoginComponent from './components/LoginComponent'
 import RegisterComponent from './components/RegisterComponent'
 import AuthRoute from './components/AuthRoute'
@@ -21,7 +24,7 @@ class App extends Component {
     return (
       <Router>
         <Navbar />
-        <Container>
+        <Container style={{ marginBottom: '10em', marginTop: '3em' }}>
         <Segment>
         <Switch>
           <AuthRoute exact path="/" type="guest">
@@ -36,10 +39,13 @@ class App extends Component {
 
           <AuthRoute exact path="/home" component={BoardsPage} type="private" />
           <AuthRoute exact path="/board/:boardId" component={BoardDetail} type="private" />
+          <AuthRoute exact path="/addboard" component={AddBoardPage} type="private" />
+          <AuthRoute exact path="/addlist/:boardId" render={(props) => <AddListPage {...props} /> } type="private" />
 
         </Switch>
         </Segment>
         </Container>
+        <Footer />
       </Router>
     )
   }

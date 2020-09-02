@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Grid, Container, Card, Segment, Divider } from 'semantic-ui-react'
+import React from 'react';
+import { Card, Segment, Divider, Icon, Button } from 'semantic-ui-react'
 
 import CardComponent from './CardComponent'
 
 function List({list}) {
+  const square = { width: 135, height: 135 }
 
   const renderLists = () => {
     return list.cards.map((card, i) => (
@@ -12,18 +12,28 @@ function List({list}) {
     ))
   }
   return (
-    <Container>
-      <Grid.Row>
-      <Segment color='teal' raised fluid>
-        <h3>{list.title}</h3>
+      <>
+      <Segment color='teal' raised fluid style={{ padding: '1em' }}>
+        <span as='h2'>{list.title}</span> 
+        <Button.Group floated='right'>
+        <Button basic color='red'>
+          <Icon name='delete' />
+        </Button>
+        <Button basic color='blue'>
+          <Icon name='edit' />
+        </Button>
+
+      </Button.Group>
         <Divider hidden />
-          <Card.Group itemsPerRow={4}>
+          <Card.Group itemsPerRow={6}>
+          <Segment circular style={square} inverted color='grey'>
+            Add an activity<br/><Icon name='add' />
+          </Segment>
           {renderLists()}
           </Card.Group>
-      </Segment>
-      </Grid.Row>
+      </Segment>      
       <Divider />
-    </Container>
+      </>
   );
 }
 

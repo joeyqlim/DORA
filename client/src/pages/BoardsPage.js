@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
 
 import { fetchBoards } from '../actions/boardsActions';
 import { Board } from '../components/Board';
 
-import { Card, Container } from 'semantic-ui-react'
+import { Card, Container, Divider, Icon, Button } from 'semantic-ui-react'
 
 const BoardsPage = ({ dispatch, loading, boards, hasErrors, userReducer }) => {
   useEffect(() => {
@@ -19,11 +20,20 @@ const BoardsPage = ({ dispatch, loading, boards, hasErrors, userReducer }) => {
   }
 
   return (
-    <Container>
+    <Container style={{ marginBottom: '3em' }}>
     {!userReducer.loggedIn ? "" : <h1>Welcome, {userReducer.user.username}</h1>}
       <h1>Boards</h1>
       <Card.Group itemsPerRow={4}>
         {renderBoards()}
+        <Card>
+        <Card.Content textAlign="center" >
+          <Card.Header content="New board" />
+          <Divider />
+          <Icon name='add' size='large' />
+
+        </Card.Content>
+        <Button color='green'><Link to="/addboard">Add Board <Icon name='add' /></Link></Button>
+      </Card>
       </Card.Group>
     </Container>
   )
