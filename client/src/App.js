@@ -7,7 +7,9 @@ import Footer from './components/Footer'
 import BoardsPage from './pages/BoardsPage'
 import BoardDetail from './components/BoardDetail'
 import AddBoardPage from './pages/AddBoardPage'
+import EditBoardPage from './pages/EditBoardPage'
 import AddListPage from './pages/AddListPage'
+import EditListPage from './pages/EditListPage'
 import AddCardPage from './pages/AddCardPage'
 import EditCardPage from './pages/EditCardPage'
 import LoginComponent from './components/LoginComponent'
@@ -42,6 +44,8 @@ class App extends Component {
           <AuthRoute exact path="/home" component={BoardsPage} type="private" />
           <AuthRoute exact path="/board/:boardId" component={BoardDetail} type="private" />
           <AuthRoute exact path="/addboard" component={AddBoardPage} type="private" />
+          <AuthRoute exact path="/editboard" component={EditBoardPage} type="private" />
+          <AuthRoute exact path="/editlist" component={EditListPage} type="private" />
           <AuthRoute exact path="/addlist/:boardId" render={(props) => <AddListPage {...props} /> } type="private" />
           <AuthRoute exact path="/addcard/:boardId/:listId" render={(props) => <AddCardPage {...props} /> } type="private" />
           <AuthRoute exact path="/editcard/:cardId" render={(props) => <EditCardPage {...props} /> } type="private" />

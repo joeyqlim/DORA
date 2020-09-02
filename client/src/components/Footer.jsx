@@ -18,7 +18,7 @@ const Footer = () => (
           <Grid.Column width={16}>
             <Header inverted as='h4' content='DORA' />
             <p>
-              made with 🤍 by joey
+              made for explorers 🤍
             </p>
           </Grid.Column>
         </Grid>
@@ -26,7 +26,7 @@ const Footer = () => (
         <Divider inverted section />
         <List horizontal inverted divided link size='small'>
           <List.Item as='a' href='https://github.com/joeyqlim/'>
-            <Icon name='github' />
+            <Icon name='github' size='big' />
           </List.Item>
         </List>
       </Container>

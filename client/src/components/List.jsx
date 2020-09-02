@@ -18,7 +18,21 @@ function List({list}) {
         <h3>{list.title}</h3> 
         <Button.Group floated='right' vertical widths='1'>
         <Popup content='Delete this list' trigger={<Button color='red' icon='delete' />} />
-        <Popup content='Edit this list' trigger={<Button color='blue' icon='edit' />} />
+        <Popup content='Edit this list' trigger={
+          <Button 
+            color='blue' 
+            icon='edit'
+            as={Link} 
+            to={{
+              pathname: `/editlist`,
+              state: {
+                title: list.title,
+                boardId: list.board,
+                listId: list._id
+              }
+              }}
+            />
+            } />
 
       </Button.Group>
         <Divider hidden />

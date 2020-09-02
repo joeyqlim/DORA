@@ -11,8 +11,21 @@ export const Board = ({ board }) => (
       <Icon name='travel' size='large' />
 
     </Card.Content>
-    <Button color='teal'><Link to={`/board/${board._id}`}>View Board <Icon name='eye' /></Link></Button>
-
+    <Button.Group>
+      <Button color='violet'>
+        <Link 
+          to={{
+            pathname: `/editboard`,
+            state: {
+              name: board.name,
+              boardId: board._id
+            }
+            }}>
+        Edit <Icon name='edit' />
+        </Link>
+      </Button>
+      <Button color='teal'><Link to={`/board/${board._id}`}>View <Icon name='eye' /></Link></Button>
+    </Button.Group>
   </Card>
   
   
