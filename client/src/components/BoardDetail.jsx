@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { Grid, Container } from 'semantic-ui-react'
 import { fetchOneBoard } from '../actions/oneBoardActions';
 
+import List from './List';
+
 function BoardDetail({ dispatch, loading, board, hasErrors, userReducer }) {
   const { boardId: boardId } = useParams();
   useEffect(() => {
@@ -14,11 +16,15 @@ function BoardDetail({ dispatch, loading, board, hasErrors, userReducer }) {
   const renderBoardDetail = () => {
     if (loading) return <p>Loading boards...</p>
     if (hasErrors) return <p>Unable to display boards</p>
-    if (typeof board.lists === undefined) {
-      return board.lists.map((list, i) => (<li key={i}>{list.title}</li>))
-    } else {
-      return <h3>No lists in this board yet. Create one?</h3>
-    }
+    if (board.lists) {
+      if (board.lists.length > 0) {
+        return board.lists.map((list, i) => (
+          <List key={i} list={list} />
+        ))
+      } else {
+        return <h3>No lists in this board yet. Create one?</h3>
+      }
+    } 
   }
 
   // fetch all lists in this board
@@ -27,7 +33,6 @@ function BoardDetail({ dispatch, loading, board, hasErrors, userReducer }) {
     <Grid divided='vertically'>
       <h2>{board.name}</h2>
       {renderBoardDetail()}
-      {board.lists}
     </Grid>
   );
 }

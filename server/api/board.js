@@ -5,6 +5,7 @@ const checkToken = require("../config/config");
 
 const Board = require('../models/board');
 const User = require('../models/user');
+const Card = require('../models/card');
 
 /* 
     @route POST api/board/new
@@ -78,7 +79,10 @@ router.get("/all", checkToken, async (req, res) => {
 router.get("/:id", checkToken, async (req, res) => {
   try {
     let board = await Board.findById(req.params.id)
-    // populate board with lists, cards
+    .populate({
+      path: 'lists',
+      populate: { path: 'cards', model: Card }
+    });
 
     res.status(200).json({
       message: "board loaded",

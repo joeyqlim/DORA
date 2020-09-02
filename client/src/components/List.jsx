@@ -1,17 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from "axios";
-import { Grid, Container } from 'semantic-ui-react'
+import { Grid, Container, Card, Segment, Divider } from 'semantic-ui-react'
 
+import CardComponent from './CardComponent'
 
-function List() {
+function List({list}) {
 
-  // each list will be a row
-  // fetch cards and render each into a card component
+  const renderLists = () => {
+    return list.cards.map((card, i) => (
+      <CardComponent key={i} card={card} />
+    ))
+  }
   return (
-    <Grid divided='vertically'>
-      {/* render cards */}
-    </Grid>
+    <Container>
+      <Grid.Row>
+      <Segment color='teal' raised fluid>
+        <h3>{list.title}</h3>
+        <Divider hidden />
+          <Card.Group itemsPerRow={4}>
+          {renderLists()}
+          </Card.Group>
+      </Segment>
+      </Grid.Row>
+      <Divider />
+    </Container>
   );
 }
 
