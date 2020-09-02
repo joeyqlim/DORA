@@ -1,8 +1,8 @@
 # DORA
 
 ## Technologies Used
-- Technology stack: MongoDB, Express, React, Node.js (MERN)
-- Libraries and Tools: , Redux, React Router, , bcrypt, JWT, Semantic UI
+- MERN stack (MongoDB, Express, React, Node.js)
+- Libraries and Tools: Redux, React Router, , bcrypt, JWT, Semantic UI
 
 ## Description
 A travel planning tool for the flexible, yet organized, explorer.
