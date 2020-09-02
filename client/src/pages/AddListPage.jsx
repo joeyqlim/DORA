@@ -49,7 +49,7 @@ class AddListPage extends Component {
                 type="text" 
                 name="title" 
                 placeholder="List title" 
-                value={this.state.name}
+                value={this.state.title}
                 onChange={this.changeHandler}
             />
             </Form.Field>

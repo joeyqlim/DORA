@@ -4,10 +4,9 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 
 const URL = process.env.REACT_APP_URL;
-class AddBoardPage extends Component {
+class AddCardPage extends Component {
   state = {
-    name: "",
-    description: "",
+    content: "",
     status: false,
   };
 
@@ -18,7 +17,7 @@ class AddBoardPage extends Component {
   submitHandler = () => {
     let token = localStorage.getItem("token");
 
-    axios.post(`${URL}/board/new`, this.state, {
+    axios.post(`${URL}/card/${this.props.match.params.listId}/new`, this.state, {
       headers: {
         'x-auth-token' : token
       }
@@ -34,36 +33,28 @@ class AddBoardPage extends Component {
 
   render() {
     if (this.state.status) {
-      return <Redirect to="/home" />;
+      return <Redirect to={`/board/${this.props.match.params.boardId}`} />;
     }
+    console.log(this.props)
 
     return (
       <Container>
       <Grid className="centered">
       <Grid.Row>
         <Grid.Column width={5}>
-          <h1>New Board</h1>
+          <h1>New Card</h1>
           <Form onSubmit={this.submitHandler}>
             <Form.Field>
             <input 
                 type="text" 
-                name="name" 
-                placeholder="Board name" 
-                value={this.state.name}
+                name="content" 
+                placeholder="Content" 
+                value={this.state.content}
                 onChange={this.changeHandler}
             />
             </Form.Field>
 
-            <Form.Field>
-            <input
-                type="text"
-                name="description"
-                placeholder="Description"
-                value={this.state.description}
-                onChange={this.changeHandler}
-            />
-            </Form.Field>
-            <Button type="submit" color="olive">Create new board</Button>  
+            <Button type="submit" color="olive">Add card to list</Button>  
           </Form>
         </Grid.Column>
       </Grid.Row>
@@ -73,4 +64,4 @@ class AddBoardPage extends Component {
   }
 }
 
-export default AddBoardPage;
+export default AddCardPage;

@@ -1,16 +1,32 @@
 import React from 'react';
-import { Icon, Segment } from 'semantic-ui-react'
+import { Segment, Button, Popup, Grid } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
 
-function CardComponent({card}) {
-  const square = { width: 135, height: 135 }
-
+function CardComponent({card, boardId}) {
+  const square = { width: 135, height: 135, marginLeft: "1em" }
   return (  
-    
-    <Segment circular style={square} inverted color='teal'>
+
+    <Popup trigger={
+      <Segment circular style={square} inverted color='teal'>
       {card.content}<br />
-      <span><Icon name='edit' /></span>
-      <span><Icon name='delete' /></span>
-    </Segment>
+      </Segment>
+    } flowing hoverable size='mini'>
+    <Grid centered divided columns={2}>
+      <Grid.Column textAlign='center'>
+        <Button color="blue" icon="edit" size='mini' as={Link} 
+        to={{
+          pathname: `/editcard/${card._id}`,
+          state: {
+            content: card.content,
+            boardId
+          }
+          }}/>
+      </Grid.Column>
+      <Grid.Column textAlign='center'>
+        <Button color="red" icon="delete" size='mini' />
+      </Grid.Column>
+    </Grid>
+    </Popup>
   );
 }
 

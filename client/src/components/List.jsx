@@ -1,32 +1,32 @@
 import React from 'react';
-import { Card, Segment, Divider, Icon, Button } from 'semantic-ui-react'
+import { Card, Segment, Divider, Icon, Button, Popup } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
 
 import CardComponent from './CardComponent'
 
 function List({list}) {
-  const square = { width: 135, height: 135 }
+  const square = { width: 135, height: 135, marginTop: "1em", marginBottom: "1.5em", marginLeft: "1.5em" }
 
   const renderLists = () => {
     return list.cards.map((card, i) => (
-      <CardComponent key={i} card={card} />
+      <CardComponent key={i} card={card} boardId={list.board}/>
     ))
   }
   return (
       <>
       <Segment color='teal' raised fluid style={{ padding: '1em' }}>
-        <span as='h2'>{list.title}</span> 
-        <Button.Group floated='right'>
-        <Button basic color='red'>
-          <Icon name='delete' />
-        </Button>
-        <Button basic color='blue'>
-          <Icon name='edit' />
-        </Button>
+        <h3>{list.title}</h3> 
+        <Button.Group floated='right' vertical widths='1'>
+        <Popup content='Delete this list' trigger={<Button color='red' icon='delete' />} />
+        <Popup content='Edit this list' trigger={<Button color='blue' icon='edit' />} />
 
       </Button.Group>
         <Divider hidden />
           <Card.Group itemsPerRow={6}>
-          <Segment circular style={square} inverted color='grey'>
+          <Segment circular style={square} inverted color='yellow' as={Link} 
+            to={{
+              pathname: `/addcard/${list.board}/${list._id}`
+              }}>
             Add an activity<br/><Icon name='add' />
           </Segment>
           {renderLists()}
