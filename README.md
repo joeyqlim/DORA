@@ -5,7 +5,7 @@
 - Libraries and Tools: Redux, React Router, , bcrypt, JWT, Semantic UI
 
 ## Description
-A travel planning tool for the flexible, yet organized, explorer.
+A travel planning tool for the flexible, yet organized explorer.
 
 
 ### User Stories
