@@ -3,25 +3,25 @@ import axios from 'axios';
 const URL = process.env.REACT_APP_URL;
 
 // Create Redux action types
-export const GET_BOARDS = 'GET_BOARDS'
-export const GET_BOARDS_SUCCESS = 'GET_BOARDS_SUCCESS'
-export const GET_BOARDS_FAILURE = 'GET_BOARDS_FAILURE'
+export const GET_CARDS = 'GET_CARDS'
+export const GET_CARDS_SUCCESS = 'GET_CARDS_SUCCESS'
+export const GET_CARDS_FAILURE = 'GET_CARDS_FAILURE'
 
 // Create Redux action creators that return an action
 export const getBoards = () => ({
-  type: GET_BOARDS,
+  type: GET_CARDS,
 })
 
-export const getBoardsSuccess = (boards) => ({
-  type: GET_BOARDS_SUCCESS,
-  payload: boards,
+export const getBoardsSuccess = (cards) => ({
+  type: GET_CARDS_SUCCESS,
+  payload: cards,
 })
 
 export const getBoardsFailure = () => ({
-  type: GET_BOARDS_FAILURE,
+  type: GET_CARDS_FAILURE,
 })
 
-// fetch all boards
+// Combine all action creators in an async thunk
 export function fetchBoards() {
   return async (dispatch) => {
     dispatch(getBoards());
@@ -35,7 +35,8 @@ export function fetchBoards() {
       });
       console.log(response.data)
 
-      dispatch(getBoardsSuccess(response.data.allBoards.boards));
+      //const data = await response.json();
+      dispatch(getBoardsSuccess(response.data.allBoards.cards));
 
     } catch (error) {
       dispatch(getBoardsFailure());
