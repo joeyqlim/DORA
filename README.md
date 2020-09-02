@@ -2,7 +2,7 @@
 
 ## Technologies Used
 - MERN stack (MongoDB, Express, React, Node.js)
-- Libraries and Tools: Redux, React Router, , bcrypt, JWT, Semantic UI
+- Libraries and Tools: Redux, React Router, axios, bcrypt, JWT, Semantic UI
 
 ## Description
 A travel planning tool for the flexible, yet organized explorer.
