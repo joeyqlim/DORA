@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 // connect to mongoose
 mongoose.connect(
-  "mongodb://localhost/dora-development", {
+  process.env.MONGODB, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
