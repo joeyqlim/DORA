@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { decode } from "jsonwebtoken";
 
-const URL = "";
+const URL = "api" || process.env.REACT_APP_URL;
 
 // Create Redux action creators
 export const setUser = (payload) => ({ type: "SET_USER", payload });

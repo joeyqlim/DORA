@@ -3,7 +3,7 @@ import { Container, Form, Button, Grid } from 'semantic-ui-react'
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
-const URL = process.env.REACT_APP_URL;
+const URL = "api" || process.env.REACT_APP_URL;
 class AddListPage extends Component {
   state = {
     title: "",

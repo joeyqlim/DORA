@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = process.env.REACT_APP_URL;
+const URL = "api" || process.env.REACT_APP_URL;
 
 export const GET_ONE_BOARD = 'GET_ONE_BOARD'
 export const GET_ONE_BOARD_SUCCESS = 'GET_ONE_BOARD_SUCCESS'
