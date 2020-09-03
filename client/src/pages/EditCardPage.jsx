@@ -3,7 +3,7 @@ import { Container, Form, Button, Grid } from 'semantic-ui-react'
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
-const URL = process.env.REACT_APP_URL;
+const URL = "/api"
 class EditCardPage extends Component {
   state = {
     content: this.props.location.state.content,
