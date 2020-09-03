@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e64e1c8e1c143e567545acc752f7e269",
+    "revision": "86a4ca0f58e553c4d401ae6674b008ba",
     "url": "/index.html"
   },
   {
-    "revision": "601b3d0f030baccf955b",
+    "revision": "a1f2ca9cead5e86ba57a",
     "url": "/static/css/2.7df41cd5.chunk.css"
   },
   {
-    "revision": "f59bd087927f09e42a75",
-    "url": "/static/css/main.c7aacb0e.chunk.css"
+    "revision": "055de40020ece59ad1cf",
+    "url": "/static/css/main.976a0d41.chunk.css"
   },
   {
-    "revision": "601b3d0f030baccf955b",
-    "url": "/static/js/2.a1c14239.chunk.js"
+    "revision": "a1f2ca9cead5e86ba57a",
+    "url": "/static/js/2.bd838e82.chunk.js"
   },
   {
     "revision": "c80f4f6d9a1de280a32e79cb39686420",
-    "url": "/static/js/2.a1c14239.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.bd838e82.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f59bd087927f09e42a75",
-    "url": "/static/js/main.eb59e964.chunk.js"
+    "revision": "055de40020ece59ad1cf",
+    "url": "/static/js/main.74bd2257.chunk.js"
   },
   {
     "revision": "9b4e396c183e42c1fa5c",
@@ -48,8 +48,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/brand-icons.e8c322de.woff2"
   },
   {
+    "revision": "854c4be8454ff1c9536fa8a927a18252",
+    "url": "/static/media/compass.854c4be8.png"
+  },
+  {
     "revision": "9c74e172f87984c48ddf5c8108cabe67",
     "url": "/static/media/flags.9c74e172.png"
+  },
+  {
+    "revision": "8f0a9e9e77ef08be1010b9efd0b6d4f7",
+    "url": "/static/media/globe.8f0a9e9e.png"
   },
   {
     "revision": "0ab54153eeeca0ce03978cc463b257f7",
@@ -70,6 +78,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "faff92145777a3cbaf8e7367b4807987",
     "url": "/static/media/icons.faff9214.woff"
+  },
+  {
+    "revision": "5e5d2957ffe3b80d4a08ae2ddda727b0",
+    "url": "/static/media/location.5e5d2957.png"
   },
   {
     "revision": "701ae6abd4719e9c2ada3535a497b341",
