@@ -15,12 +15,21 @@ class Navbar extends Component {
     this.props.logUserOut()
   }
 
+  componentDidMount() {
+    document.addEventListener("scroll", () => {
+      const navColor = window.scrollY > 33 ? "rgb(0, 0, 0, .6)" : "rgb(0, 0, 0, 1)";
+
+      this.setState({ navColor });
+    });
+  }
+  
+
   render() {
     const { activeItem } = this.state
 
     return (
       <Segment>
-        <Menu pointing secondary size="massive">
+        <Menu fixed='top' inverted size='massive' style={{ backgroundColor: this.state.navColor}} >
           <Menu.Item>DORA</Menu.Item>
           {!this.props.userReducer.loggedIn ?  
           <Menu.Item

@@ -14,7 +14,7 @@ function List({list}) {
   }
   return (
       <>
-      <Segment color='teal' raised fluid style={{ padding: '1em' }}>
+      <Segment color='purple' raised fluid style={{ padding: '1em' }}>
         <h3>{list.title}</h3> 
         <Button.Group floated='right' vertical widths='1'>
         <Popup content='Delete this list' trigger={<Button color='red' icon='delete' />} />
@@ -37,7 +37,7 @@ function List({list}) {
       </Button.Group>
         <Divider hidden />
           <Card.Group itemsPerRow={6}>
-          <Segment circular style={square} inverted color='yellow' as={Link} 
+          <Segment circular style={square} inverted color='purple' as={Link} 
             to={{
               pathname: `/addcard/${list.board}/${list._id}`
               }}>

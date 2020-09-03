@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import { fetchBoards } from '../actions/boardsActions';
 import { Board } from '../components/Board';
+import Spinner from '../components/Spinner';
 
 import { Card, Container, Divider, Icon, Button } from 'semantic-ui-react'
 
@@ -14,23 +15,21 @@ const BoardsPage = ({ dispatch, loading, boards, hasErrors, userReducer }) => {
 
   // Show loading, error or success state
   const renderBoards = () => {
-    if (loading) return <p>Loading boards...</p>
+    if (loading) return <Spinner />
     if (hasErrors) return <p>Unable to display boards</p>
     return boards.map((board, i) => <Board key={i} board={board} />)
   }
 
   return (
     <Container style={{ marginBottom: '3em' }}>
-    {!userReducer.loggedIn ? "" : <h1>Welcome, {userReducer.user.username}</h1>}
-      <h1>Boards</h1>
-      <Card.Group itemsPerRow={4}>
+    {!userReducer.loggedIn ? "" : <h1><span role="img" aria-label="wave">👋</span> Welcome, {userReducer.user.username}!</h1>}
+      <Card.Group itemsPerRow={3}>
         {renderBoards()}
         <Card>
         <Card.Content textAlign="center" >
           <Card.Header content="New board" />
           <Divider />
-          <Icon name='add' size='large' />
-
+          <span role="img" aria-label="sparkle">✨</span>
         </Card.Content>
         <Button color='green'><Link to="/addboard">Add Board <Icon name='add' /></Link></Button>
       </Card>

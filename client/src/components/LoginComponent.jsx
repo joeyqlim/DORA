@@ -28,7 +28,7 @@ class LoginComponent extends React.Component {
                 <Grid className="centered">
                 <Grid.Row>
                     <Grid.Column width={5}>
-                        <h1>Log In</h1>
+                        <h1 style={{ color: "white"}}>Log In</h1>
                         <Form onSubmit={this.onSubmit}>
                             <Form.Field>
                             <input 
@@ -49,7 +49,7 @@ class LoginComponent extends React.Component {
                                 onChange={this.handleOnChange}
                             />
                             </Form.Field>
-                            <Button type="submit">Log In</Button>
+                            <Button type="submit" inverted floated="right">Log In</Button>
                             
                         </Form>
                     </Grid.Column>

@@ -30,7 +30,7 @@ class SignUpComponent extends React.Component {
                 <Grid className="centered">
                 <Grid.Row>
                     <Grid.Column width={5}>
-                        <h1>Register</h1>
+                        <h1 style={{ color: "white"}}>Register</h1>
                         <Form onSubmit={this.onSubmit}>
                             <Form.Field>
                             <input 
@@ -71,7 +71,7 @@ class SignUpComponent extends React.Component {
                                 onChange={this.handleOnChange}
                             />
                             </Form.Field>
-                            <Button type="submit">Register</Button>
+                            <Button type="submit" inverted floated="right">Register</Button>
                             
                         </Form>
                     </Grid.Column>

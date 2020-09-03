@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Container, Form, Button, Grid } from 'semantic-ui-react'
+import locationImg from '../assets/location.png'
+import { Container, Form, Button, Grid, Image } from 'semantic-ui-react'
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
@@ -41,6 +42,11 @@ class AddCardPage extends Component {
       <Container>
       <Grid className="centered">
       <Grid.Row>
+        <Grid.Column width={4}>
+          <Image size="medium" src={locationImg}/>
+        </Grid.Column>
+        <Grid.Column width={1}>
+        </Grid.Column>
         <Grid.Column width={5}>
           <h1>New Card</h1>
           <Form onSubmit={this.submitHandler}>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Container, Form, Button, Grid } from 'semantic-ui-react'
+import globeImg from '../assets/globe.png'
+import { Container, Form, Button, Grid, Image } from 'semantic-ui-react'
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
@@ -8,7 +9,7 @@ class EditBoardPage extends Component {
   state = {
     name: this.props.location.state.name,
     boardId: this.props.location.state.boardId,
-    // description
+    description: this.props.location.state.description,
     status: false,
   };
 
@@ -42,6 +43,11 @@ class EditBoardPage extends Component {
       <Container>
       <Grid className="centered">
       <Grid.Row>
+        <Grid.Column width={4}>
+          <Image size="medium" src={globeImg}/>
+        </Grid.Column>
+        <Grid.Column width={1}>
+        </Grid.Column>
         <Grid.Column width={5}>
           <h1>Edit Board</h1>
           <Form onSubmit={this.submitHandler}>

@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router, Switch } from 'react-router-dom'
+import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import {connect} from 'react-redux'
 
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import LandingPage from './pages/LandingPage'
 import BoardsPage from './pages/BoardsPage'
 import BoardDetail from './components/BoardDetail'
 import AddBoardPage from './pages/AddBoardPage'
@@ -28,18 +29,19 @@ class App extends Component {
     return (
       <Router>
         <Navbar />
-        <Container style={{ marginBottom: '10em', marginTop: '3em' }}>
-        <Segment>
+        <Container style={{ marginBottom: '12em', marginTop: '8em' }}>
         <Switch>
-          <AuthRoute exact path="/" type="guest">
+          <Route exact path="/" component={LandingPage} />
+          {/* <AuthRoute exact path="/" type="guest">
             <LoginComponent />
-          </AuthRoute>
+          </AuthRoute> */}
           <AuthRoute exact path="/login" type="guest">
             <LoginComponent />
           </AuthRoute>
           <AuthRoute exact path="/register" type="guest">
             <RegisterComponent />
           </AuthRoute>
+          <Segment raised style={{maxWidth: 1000, margin: '0 auto'}}>
 
           <AuthRoute exact path="/home" component={BoardsPage} type="private" />
           <AuthRoute exact path="/board/:boardId" component={BoardDetail} type="private" />
@@ -49,9 +51,9 @@ class App extends Component {
           <AuthRoute exact path="/addlist/:boardId" render={(props) => <AddListPage {...props} /> } type="private" />
           <AuthRoute exact path="/addcard/:boardId/:listId" render={(props) => <AddCardPage {...props} /> } type="private" />
           <AuthRoute exact path="/editcard/:cardId" render={(props) => <EditCardPage {...props} /> } type="private" />
+          </Segment>
 
         </Switch>
-        </Segment>
         </Container>
         <Footer />
       </Router>

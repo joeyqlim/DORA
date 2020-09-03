@@ -8,7 +8,7 @@ export const Board = ({ board }) => (
     <Card.Content textAlign="center" >
       <Card.Header content={board.name} />
       <Divider />
-      <Icon name='travel' size='large' />
+      <p>{board.description}</p>
 
     </Card.Content>
     <Button.Group>
@@ -18,7 +18,8 @@ export const Board = ({ board }) => (
             pathname: `/editboard`,
             state: {
               name: board.name,
-              boardId: board._id
+              boardId: board._id,
+              description: board.description,
             }
             }}>
         Edit <Icon name='edit' />
