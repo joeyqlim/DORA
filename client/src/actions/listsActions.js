@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = "/api"
+const URL = process.env.REACT_APP_URL;
 
 // Create Redux action types
 export const GET_LISTS = 'GET_LISTS'
