@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = "api" || process.env.REACT_APP_URL;
+const URL = process.env.REACT_APP_URL;
 
 // Create Redux action types
 export const GET_CARDS = 'GET_CARDS'
