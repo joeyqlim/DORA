@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import {BrowserRouter as Router, Switch } from 'react-router-dom'
 import {connect} from 'react-redux'
 
 import Navbar from './components/Navbar'
@@ -31,7 +31,7 @@ class App extends Component {
         <Navbar />
         <Container style={{ marginBottom: '12em', marginTop: '8em' }}>
         <Switch>
-          <Route exact path="/" component={LandingPage} />
+          <AuthRoute exact path="/" component={LandingPage} type="guest"/>
           {/* <AuthRoute exact path="/" type="guest">
             <LoginComponent />
           </AuthRoute> */}

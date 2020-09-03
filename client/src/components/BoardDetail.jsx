@@ -5,6 +5,7 @@ import { Grid, Card, Container, Button, Icon } from 'semantic-ui-react'
 import { fetchOneBoard } from '../actions/oneBoardActions';
 
 import List from './List';
+import Spinner from '../components/Spinner';
 
 const BoardDetail = ({ dispatch, loading, board, hasErrors }) => {
   const { boardId } = useParams();
@@ -14,7 +15,7 @@ const BoardDetail = ({ dispatch, loading, board, hasErrors }) => {
 
   // Show loading, error or success state
   const renderBoardDetail = () => {
-    if (loading) return <p>Loading boards...</p>
+    if (loading) return <Spinner />
     if (hasErrors) return <p>Unable to display boards</p>
     if (board.lists) {
       if (board.lists.length > 0) {

@@ -1,5 +1,6 @@
 const defaultState = {
-  loggedIn: false,
+  token: localStorage.getItem('token'),
+  loggedIn: localStorage.getItem('token') ? true : false,
   user: {}
 }
 
